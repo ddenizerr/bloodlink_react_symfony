@@ -3,3 +3,14 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+
+
+api_login:
+    path: /api/login
+    controller: Symfony\Bundle\FrameworkBundle\Controller\AbstractController::json
+    methods: [POST]
+
+api_protected_route:
+    path: /api/protected
+    controller: App\Controller\ApiUserController::userData
+    methods: [GET]
