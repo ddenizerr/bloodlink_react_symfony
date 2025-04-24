@@ -4,6 +4,31 @@
 
 BloodLink is a web application designed for managing blood donations and donor requests. It uses **Symfony 7** for the backend API, and **React** for the frontend to handle user authentication, token management, and displaying data.
 
+## 💻 Features
+
+🔐 **Login & Register** pages with card flip animation
+
+    ✅ Fully mobile responsive using Tailwind utilities
+
+    🎯 Smart styling:
+
+    ✨ Reusable component structure for forms and layout
+    
+    ⚡️ Tailwind CSS + Webpack Encore integration
+
+## ⏳ Coming Soon
+
+    🩸 Blood donation management system
+
+    📋 Donor request creation and tracking
+
+    👤 User profile page with donation history
+
+    🔍 Search and filter for requests and donors
+
+    🧪 Integration tests for API and UI
+
+
 ## 📦 **Technologies Used**
 
 ### Backend (Symfony)
@@ -17,6 +42,8 @@ BloodLink is a web application designed for managing blood donations and donor r
 - **React**: JavaScript library for building the frontend.
 - **Axios**: For making HTTP requests to the backend API.
 - **React Router**: For routing and navigation within the frontend.
+- **Tailwind CSS**: Utility-first CSS framework for fast and responsive styling.
+- **React Hooks**: Used for managing state and lifecycle logic within function components.
 
 ## 🚀 **Getting Started**
 
@@ -76,18 +103,20 @@ npm start
 ```
 Your frontend will be available at http://localhost:3000.
 
-## ⚡ Features to Add:
-
-Blood Donation Management: API and frontend to manage donations.
-Donor Request Management: Create, update, and delete donor requests.
-User Profile: Allow users to manage their profile, including updating their donation history.
-Search and Filter: Implement search and filtering capabilities for donations and requests.
-
 
 ## 🛠 Troubleshooting
 
-JWT Token Issues:
+#### JWT Token Issues:
 Ensure the JWT keys are generated correctly.
 If you encounter issues with expired tokens, implement token refresh logic.
-CORS Issues:
-Ensure your frontend can access the backend by adding the necessary CORS headers on the backend, especially during development.
+### 🌐 CORS Issues
+- If your frontend is on a different port (e.g., Vite or Webpack dev server), configure allowed origins in `nelmio_cors.yaml`.
+- Example:
+  ```yaml
+  paths:
+    '^/api/':
+      allow_origin: ['http://localhost:3000']
+      allow_headers: ['Content-Type', 'Authorization']
+      allow_methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']
+  ```
+  
