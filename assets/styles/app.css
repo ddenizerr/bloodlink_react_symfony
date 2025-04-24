@@ -1,3 +1,9 @@
+@import "./components/auth-card.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
-    background-color: skyblue;
+    background-color: #F5F5F5;
 }
