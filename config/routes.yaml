@@ -14,3 +14,10 @@ api_protected_route:
     path: /api/protected
     controller: App\Controller\ApiUserController::userData
     methods: [GET]
+
+# config/routes.yaml
+app_react_router:
+    path: /{reactRouting}
+    controller: App\Controller\AppController::index
+    requirements:
+        reactRouting: .*

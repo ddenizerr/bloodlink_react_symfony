@@ -10,6 +10,7 @@ class AppController extends AbstractController
 {
 
     #[Route('/', name:"app_home")]
+    #[Route('/{/{reactRouting}', name:'app_react', requirements: ["reactRouting" => '^(?!api|admin).+'])]
     public function index(): Response
     {
         return $this->render('base.html.twig');

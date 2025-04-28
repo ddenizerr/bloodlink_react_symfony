@@ -1,13 +1,23 @@
 import React from "react";
 import Layout from "./components/Layout/Layout";
-import AuthCard from "./components/Authentication/AuthCard";
 import '../styles/components/auth-card.css';
+import ComingSoon from "./components/Layout/ComingSoon";
+import {BrowserRouter, Routes, Route} from "react-router-dom";
+import About from "./components/About/About";
+import DonationRequests from "./components/DonationRequests/DonationRequests";
 
 const App = () => {
     return (
-        <Layout>
-            <AuthCard/>
-        </Layout>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Layout/>}>
+                    <Route index element={<ComingSoon/>}/>
+                    <Route path={"about"} element={<About/>} />
+                    <Route path={"donation-requests"} element={<DonationRequests/>} />
+                </Route>
+            </Routes>
+        </BrowserRouter>
+
     );
 }
 
