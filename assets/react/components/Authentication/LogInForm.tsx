@@ -1,17 +1,46 @@
-import React from "react";
+import {handleSubmit} from "../../utils/requestHelper";
 import AuthCardHeader from "./AuthCardHeader";
+import {useState} from "react";
+import {useNavigate} from "react-router-dom";
+import Alert from '../ui/Alert';
 
-const SignInForm = ({onFlip}: {onFlip:() => void}) => {
+const LogInForm = ({onFlip}: { onFlip: () => void }) => {
+
+    const [error, setError] = useState<string | null>(null);
+    const navigate = useNavigate();
+    const handleFormSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+
+        const form = e.currentTarget as HTMLFormElement;
+        const formData = new FormData(form);
+
+        await handleSubmit(e, {
+            endpoint: '/api/login',
+            method: 'POST',
+            buildPayload: (formData) => ({
+                email: formData.get('email'),
+                password: formData.get('password'),
+            }),
+            onSuccess: (data) => {
+                console.log('Login successful', data);
+                navigate('/', {state: {message: 'Successfully logged in!'}});
+            },
+            onError: (error) => {
+                setError(error.message || 'Login failed, invalid credentials');
+            }
+        })
+    }
 
     return (
-        <div>
+        <>
             <div className='bg-white p-6 sm:p-8 rounded-2xl shadow-lg w-full max-w-sm saturate-150'>
                 <AuthCardHeader title={'Sign in into your account'}/>
-
                 <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-                    <form className="space-y-6" action="#" method="POST">
+                    {error && (<Alert colour="red"> Invalid credentials. </Alert>
+                    )}
+                    <form className="space-y-6" method="POST" onSubmit={handleFormSubmit}>
                         <div>
-                            <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900">Email
+                            <label htmlFor="email" className="block text-sm/6 font-medium text-gray-800">Email
                                 address</label>
                             <div className="mt-2">
                                 <input type="email" name="email" id="email" autoComplete="email" required
@@ -45,12 +74,14 @@ const SignInForm = ({onFlip}: {onFlip:() => void}) => {
 
                     <p className="mt-10 text-center text-sm/6 text-gray-500">
                         Not a member?
-                        <button onClick={onFlip}><span className='font-semibold text-red-800 sm:text-grey-600 hover:text-red-500'> Register!</span></button>
+                        <button onClick={onFlip}><span
+                            className='font-semibold text-red-800 sm:text-grey-600 hover:text-red-500'> Register!</span>
+                        </button>
                     </p>
                 </div>
             </div>
-        </div>
+        </>
     );
 }
 
-export default SignInForm;
+export default LogInForm;

@@ -7,8 +7,7 @@ use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Exception;
-use Symfony\Component\PasswordHasher\Hasher\PasswordHasherFactory;
-use Symfony\Component\PasswordHasher\Hasher\PasswordHasherFactoryInterface;
+use Faker\Factory;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 
@@ -27,9 +26,11 @@ class AppFixtures extends Fixture
         $users = [];
         $requests = [];
 
+        $faker = Factory::create();
+
         for ($i = 0; $i < 5; $i++) {
             $user = new User();
-            $user->setEmail('test@bloodlink.com');
+            $user->setEmail($faker->unique()->safeEmail);
             $user->setPassword($this->userPasswordHasher->hashPassword($user, 'test123'));
             $user->setRoles(['ROLE_USER']);
             $user->setCreatedAt(new \DateTimeImmutable());

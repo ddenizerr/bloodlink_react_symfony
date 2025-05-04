@@ -15,7 +15,7 @@ const ComingSoon = () =>{
               </p>
 
               <p className="w-full max-w-2xl text-gray-800 text-sm sm:text-base md:text-lg leading-relaxed mb-6 lg:text-left">
-                BloodLink is an upcoming platform designed to simplify and accelerate the process of
+                <span className="text-red-600">blood</span><span>link</span> is an upcoming platform designed to simplify and accelerate the process of
                 finding and connecting with blood donors during emergencies.
                 <br /><br />
                 Built with <strong>React</strong> and <strong>PHP</strong>, it will allow users to register,

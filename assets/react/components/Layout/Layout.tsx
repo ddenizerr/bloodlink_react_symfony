@@ -15,16 +15,17 @@ const Layout = ({children, className}: { children?: ReactNode, className?: strin
                     </div>
 
                     <nav className=" flex-grow flex justify-center gap-8 text-sm font-medium text-gray-600">
+                        <Link to="/coming-soon" className="hover:text-red-500 transition-colors"> Coming Soon </Link>
                         <Link to="/" className="hover:text-red-500 transition-colors"> Home </Link>
                         <Link to="/about" className="hover:text-red-500 transition-colors"> About </Link>
-                        <Link to="/donation-requests" className="hover:text-red-500 transition-colors"> Donation
-                            Requests </Link>
-
+                        <Link to="/donation-requests" className="hover:text-red-500 transition-colors"> Donation Requests </Link>
                     </nav>
 
                     {/* Right: Placeholder */}
 
-
+                    <div className="flex-shrink-0 text-right">
+                        <Link to="/login" className="hover:text-red-500 transition-colors"> Login or Register </Link>
+                    </div>
 
                 </header>
 

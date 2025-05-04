@@ -10,7 +10,8 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "skipLibCheck": true,
-    "baseUrl": "./assets/react"
+    "baseUrl": "./assets/react",
+    "lib": ["dom","esnext"]
   },
   "include": ["assets/react/**/*"]
 }

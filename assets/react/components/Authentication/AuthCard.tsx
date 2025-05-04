@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import RegisterForm from "./RegisterForm";
-import SignInForm from "./SignInForm";
+import LogInForm from "./LogInForm";
 
 
 const AuthCard = () => {
@@ -12,7 +12,7 @@ const AuthCard = () => {
         <div className="card-container ">
             <div className={`card ${isFlipped ? "flipped" : ""}`}>
                 <div className="card-face card-front">
-                    <SignInForm onFlip = {() => setIsFlipped(true)}/>
+                    <LogInForm onFlip = {() => setIsFlipped(true)}/>
                 </div>
                 <div className="card-face card-back">
                     <RegisterForm onFlip = {() => setIsFlipped(false)}/>

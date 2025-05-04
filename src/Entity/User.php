@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Serializer\Attribute\Groups;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\HasLifecycleCallbacks]
@@ -16,26 +17,33 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups('user:read')]
     private ?int $id = null;
 
-    #[ORM\Column(length: 200)]
-    private ?string $email = null;
+    #[Groups('user:read')]
+    #[ORM\Column(length: 255, unique: true)]
+    private string $email;
 
+    #[Groups('user:read')]
     #[ORM\Column(nullable: true)]
     private array $roles = [];
 
     #[ORM\Column(length: 255)]
     private ?string $password = null;
 
+    #[Groups('user:read')]
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
+    #[Groups('user:read')]
     #[ORM\Column(length: 255)]
     private ?string $surname = null;
 
+    #[Groups('user:read')]
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
 
+    #[Groups('user:read')]
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $updatedAt = null;
 
